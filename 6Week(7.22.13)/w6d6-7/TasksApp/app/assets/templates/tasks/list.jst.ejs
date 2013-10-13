@@ -1,0 +1,10 @@
+<ul>
+  <% tasks.each(function (task) { %>
+    <li class="task">
+    	<!-- notice that the path is prefixed by #, which is to prevent the http
+    	request being made to the server. You can use the HTML5 history.pushState
+    	method to change the url without causing the browser make any requests -->
+      <a href="#/tasks/<%= task.escape("id") %>"><%= task.escape("title") %></a>
+    </li>
+  <% }); %>
+</ul>

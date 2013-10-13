@@ -1,0 +1,50 @@
+html {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+figure {
+  margin:2px 0;
+  background-color:white;
+  padding: 20px;
+}
+
+.container {
+  margin: 50px auto;
+  padding: 1px;
+  width: 550px;
+  background-color: lightgray;
+}
+
+.entry {
+  margin: 10px;
+}
+
+.profile-pic {
+  height: 60px;
+  width: 60px;
+  border: 2px solid blue;
+  float:left;
+  margin-right:20px;
+}
+
+.content {
+  padding: 20px;
+  background-color:white;
+}
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.name {
+  color: blue;
+  font-weight: bold;
+}
+
+.details {
+  color: gray;
+}

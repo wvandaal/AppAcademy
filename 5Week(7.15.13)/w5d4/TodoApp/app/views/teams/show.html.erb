@@ -1,0 +1,15 @@
+<h1><%= @team.name %></h1>
+<h3>Team Members</h3>
+<ul><% @team.users.try(:each) do |user| %>
+	<li><%= link_to user.name, user %></li>
+	<% end %>
+	<br>
+	<li><%= link_to "[Edit Team Members]", edit_members_team_path %></li>
+</ul>
+<h3>Projects</h3>
+<ul><% @team.projects.try(:each) do |proj| %>
+	<li><%= link_to proj.title, proj %></li>
+	<% end %>
+</ul>
+<br><hr><br>
+ <%= link_to "Add New Project", new_project_path %>

@@ -1,0 +1,24 @@
+<ul>
+	<% @users.try(:each) do |user| %>
+		<li><%= link_to user.username, user %></li>
+	<% end %>
+</ul>
+
+<div class="results">
+
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('li a').on('click', function(event) {
+			event.preventDefault();
+			var that = this;
+			$('.results').hide();
+
+			$.get($(that).attr('href'), function(data) {
+				var x = new UserModel.User(data);
+				$('.results').html(JSON.stringify(x)).fadeIn();
+			})
+		})
+	});
+</script>

@@ -1,0 +1,27 @@
+<form action="<%= path %>" method="post">
+	<input type="hidden" name="_method" value="<%= method %>">
+
+	<label for="title">Task Name</label><br>
+	<input id="title" name="item[title]" value="<%= @item.title %>"><br><br>
+
+	<label for="description">Description</label><br>
+	<textarea id="description" name="item[description]"><%= @item.description %></textarea><br><br>
+
+	<label for="project">Project:</label>&emsp;
+	<select id="project" name="item[project_id]">
+		<option></option>
+		<% Project.all.try(:each) do |project| %>
+			<option value="<%= project.id %>" <%= "selected='selected'" if @item.project == project %>><%= project.title %></option>
+		<% end %>
+	</select><br><br>
+
+	<%= render partial: 'shared/csrf' %><hr><br>
+	<table>
+		<tr>
+			<td><input type="submit" value="Submit"></td></form>
+			<%if @item.id %>
+				<td>or</td>
+				<td><%= button_to "Delete", @item, method: :delete %></td>
+			<% end %>
+		</tr>
+	</table>

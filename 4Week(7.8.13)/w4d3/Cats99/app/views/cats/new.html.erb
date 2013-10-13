@@ -1,0 +1,24 @@
+<p id="notice"><%= flash[:error] %></p>
+<form action="<%= cats_path %>" method="post">
+  <label for="cat_name">Name</label>
+  <input type="text" name="cat[name]" id="cat_name">
+  <label for="cat_sex">Sex</label>
+  <select name = "cat[sex]" id="cat_sex">
+    <% Cat.sexes.each do |sex| %>
+      <option value="<%= sex %>"><%= sex.capitalize %> </option>
+    <% end %>
+  </select>
+  <label for="cat_color">Color</label>
+  <select name = "cat[color]" id="cat_color">
+    <% Cat.colors.each do |color| %>
+      <option value="<%= color %>"><%= color.capitalize %> </option>
+    <% end %>
+  </select>
+  <label for="cat_birth_date">Birthdate</label>
+  <input type="date" name="cat[birth_date]" id="cat_birth_date">
+  <input type="hidden" name="cat[user_id]" value="<%= @user.id %>">
+  <input type="hidden"
+           name="authenticity_token"
+           value="<%= form_authenticity_token %>">
+  <input type="submit" value="Create cat">
+</form>

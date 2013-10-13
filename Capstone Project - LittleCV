@@ -1,0 +1,21 @@
+Capstone Project: LittleCV
+
+Abstract: The idea behind this application is simple: provide a user-friendly interface for groups of related people (C-suite members of a company, family members, clubs, etc.) to post personal resumes in an interactive format (think vizify.com but more specialized to users' personal histories and less infographic-heavy). The webpage would root to a users index showing each users' name and profile photo which links to a subdomain of the website matching their username (e.g. willem.vandaalen.com). Users will then be able to add education information, awards and honors, extracurricular activities, photos, as well as code or programs which they have written. While the index page and subdomains will all be rendered using traditional HTTP requests, all pieces of subsequent data would be rendered in the subdomain via AJAX (using Backbone most likely). If time allows I would also like to add the ability for users to edit their information in-page using AJAX to update the data on the server, but this may be too time-consuming to complete within the allotted timeframe.
+
+Models:
+User 
+School
+Enrollment (join table between User and School)
+Degree (belongs to Enrollment)
+Employer
+Employment (join table between User and Employer, would include position held, etc.)
+Honors
+Photos
+Programs
+Links
+
+Potential APIs:
+Twitter
+Facebook
+LinkedIn
+

@@ -1,0 +1,23 @@
+<%= @post.title %>
+<p>
+	<%= @post.body %>
+</p>
+<%= @post.user.username %>
+<br>
+<%= link_to "Edit Post", edit_post_path(@post) %>
+<br>
+<ul>
+<% @post.tags.each do |tag| %>
+	<li><%= tag.name %><%= button_to "Remove Tag", tag_path(tag.id), :method => :delete %></li>
+<% end %>
+</ul>
+<br>
+Add Tag
+<br>
+<form action="<%= tags_path %>" method="post">
+	<label for="name">Tag Name</label>
+	<input type="text" name="tag[name]" id="name" />
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	<input type="hidden" name="tag[post_id]" value="<%= @post.id %>">
+	<input type="submit" value="Add Tag">
+</form>

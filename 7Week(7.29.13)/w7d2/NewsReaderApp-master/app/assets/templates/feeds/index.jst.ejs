@@ -1,0 +1,22 @@
+<h1>Feeds</h1>
+<ul>
+  <% feeds.each(function(feed){ %>
+    <li>
+      <a class="link" href="#/feeds/<%= feed.escape('id') %>/entries">
+        <%= feed.escape("title") %>
+      </a>
+    </li>
+  <% }); %>
+</ul>
+<hr>
+<h4>Add a Feed</h4>
+<% if (errors.length) { %>
+  <ul style="color:red">
+    <% _.each(errors, function (error) { %>
+      <li><%= _.escape(error) %></li>
+    <% }); %>
+  </ul>
+<% } %>
+<input type="text" name="feed[url]" id="feed_url">
+<button class="new_feed">Submit</button>
+

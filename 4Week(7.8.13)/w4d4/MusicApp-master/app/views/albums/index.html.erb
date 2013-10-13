@@ -1,0 +1,6 @@
+<h2>Albums</h2>
+<ul>
+  <% @albums.try(:each) do |album| %>
+    <li><%= link_to "'#{album.title}' by #{album.band.name}", album %></li>
+  <% end %>
+</ul>

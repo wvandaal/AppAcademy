@@ -1,0 +1,42 @@
+html, body, header, div, ul, li, a, footer, p, figure{
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+html {
+  font-family: arial,sans-serif;
+  color: #333;
+}
+
+/* Navbar */
+
+
+.nav > li > a {
+  float: left;
+  background: url('navbar.png') no-repeat top center;
+  display: block;
+  padding: 15px 50px;
+  background-color: gray;
+}
+
+#mac {
+  background-position: 0 25% ;
+}

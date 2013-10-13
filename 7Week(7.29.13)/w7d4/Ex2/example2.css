@@ -1,0 +1,154 @@
+/* Default styles */
+html, body, nav, div, ul, li, aside{
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+html {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+/* Page styles */
+body {
+  background-color: #eee;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+h1 {
+  font-size: 2em;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar styles */
+header {
+  background-color:red;
+  width: 100%;
+  position: fixed;
+  border-bottom: 3px solid black;
+  top: 0;
+  left: 0;
+}
+
+nav {
+  background-color:red;
+  width: 1000px;
+  color: white;
+  font-weight: bold;
+  margin: 0 auto;
+}
+
+.banner {
+  border-left: 3px solid black;
+  float: left;
+}
+
+.banner > a {
+  padding: 22px 30px;
+  display: block;
+  text-decoration: none;
+  color: white;
+}
+
+ul {
+  float: right;
+  list-style-type:none;
+}
+
+ul > li {
+  float:left;
+  position: relative;
+}
+
+ul > li:hover > ul {
+  display: block;
+}
+
+nav > ul > li:last-child {
+  border-right: 3px solid black;
+}
+
+ul > li > a {
+  display: block;
+  text-decoration: none;
+  padding: 22px 25px;
+}
+
+nav > ul > li > a {
+  border-left: 3px solid black;
+  color: white;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  width: 101%;
+  border-top: 3px solid black;
+  float: none;
+}
+
+.dropdown > li {
+  float: none;
+}
+
+.dropdown > li > a {
+  border: 3px solid black;
+  border-top:none;
+  background-color: white;
+}
+
+.badge {
+  background-color: black;
+  padding: 3px 6px;
+  border-radius: 10px;
+}
+
+/* Content */
+.container {
+  width: 994px;
+  margin: 60px auto;
+  padding-top: 20px;
+  background-color: white;
+  border: 3px solid lightgray;
+}
+
+.content {
+  float: left;
+  padding: 0 0 0 20px;
+  width: 60%;
+}
+
+footer {
+  margin: -3px;
+  border: 3px solid grey;
+  background-color: #eee;
+  clear: both;
+}
+
+footer > div {
+  float: left;
+  padding: 22px 25px;
+  color: gray;
+}
+
+footer > ul > li > a {
+  color: gray;
+}
+
+/* Sidebar */
+aside {
+  margin: 0 30px;
+  padding-right: 30px;
+  float: left;
+  width: 25%;
+  border-right: 3px solid lightgray;
+}

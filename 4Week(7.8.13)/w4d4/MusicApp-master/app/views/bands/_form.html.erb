@@ -1,0 +1,8 @@
+<form action="<%= path %>" method="post" >
+  <label for="name">Name: </label>
+  <input type="text" name="band[name]" id="name" value="<%= @band.name %>">
+  <br><br>
+  <%= render partial: 'shared/csrf_input.html.erb' %>
+  <input type="hidden" name="_method" value="<%= method %>">
+  <input type="submit" value="Submit">
+</form>

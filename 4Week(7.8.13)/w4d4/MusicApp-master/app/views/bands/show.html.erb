@@ -1,0 +1,14 @@
+<h2><%= @band.name %></h2>
+<h3>Albums</h3>
+<ul>
+  <% @band.albums.try(:each) do |album| %>
+    <li><%= link_to "#{album.title} (#{album.pub_date.year})", album %></li>
+  <% end %>
+</ul>
+<h4><%= link_to "All Tracks by #{@band.name}", band_tracks_url(@band) %></h4>
+
+<% if is_admin? %>
+  <%= link_to "Edit Band", edit_band_url(@band)  %>
+  &nbsp;&#124;&nbsp;
+  <%= link_to "Create Album", new_band_album_url(@band) %>
+<% end %>

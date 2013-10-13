@@ -1,0 +1,24 @@
+<form action="<%= path %>" method="post" >
+  <label for="title">Title: </label>
+  <input type="text" name="track[title]" id="title" value="<%= @track.title %>">
+  <br><br>
+
+  <label for="type">Type: </label>
+  <select name="track[track_type]" id="track_type">
+    <% TRACK_TYPES.each do |type| %>
+      <option value="<%= type %>"
+                        <%= "selected" if @track.track_type == type %> >
+        <%= type.capitalize %>
+      </option>
+    <% end %>
+  </select>
+  <br><br>
+
+  <label for="lyrics">Lyrics: </label><br>
+  <textarea name="track[lyrics]" id="lyrics"><%= @track.lyrics %></textarea>
+  <br><br>
+
+  <%= render partial: 'shared/csrf_input.html.erb' %>
+  <input type="hidden" name="_method" value="<%= method %>">
+  <input type="submit" value="Submit">
+</form>

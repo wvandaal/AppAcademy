@@ -1,0 +1,6 @@
+<h2><%= current_user.try(:username) %></h2>
+<% if logged_in? %>
+	<%= button_to "Sign Out", session_path, method: :delete %>
+<% else %>
+	<%= link_to "Sign In", new_session_path %>
+<% end %>

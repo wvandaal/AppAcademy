@@ -1,0 +1,147 @@
+/* General styles */
+html, body, header, div, ul, li, a, footer, p{
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0 8px;
+}
+
+html {
+  font-family: arial,sans-serif;
+  font-size: small;
+}
+
+html, body {
+  height: 100%;
+}
+/* Navbar header */
+
+header {
+  background-color: black;
+  opacity: .8;
+  width: 100%;
+  min-width: 800px;
+}
+
+header > ul > li {
+  float:left;
+}
+
+header > ul > li > a {
+  display: block;
+  color: lightgray;
+  padding: 8px 10px;
+  font-weight: bold;
+}
+
+header > ul > li > a:hover {
+  color:white;
+}
+
+/* Content */
+
+.wrap {
+  min-height: 100%;
+  margin-bottom: -40px;
+}
+
+.wrap:after {
+  content: "";
+  display: block;
+}
+
+.content {
+  width: 1000px;
+  min-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+.search-text {
+  margin: 10px auto;
+  width: 550px;
+  height: 25px;
+  background: url('mic.gif') no-repeat right center;
+  opacity: .6;
+}
+
+.search-text:hover {
+  opacity: .8;
+}
+
+figure.banner {
+  display: block;
+  margin: 0px auto;
+  padding: 60px 0 20px;
+
+}
+
+/* Buttons */
+button {
+  background-color: #eee;
+  color: #333;
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  font-weight: bold;
+  padding: 6px;
+  margin: 7px;
+}
+
+.search-buttons {
+  margin-bottom: 30px;
+}
+
+button.sign-in {
+  border: 1px solid #d14836;
+  color: white;
+  background-color: #d14836;
+  padding: 7px 15px;
+  float: right;
+  margin: 15px;
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid lightgray;
+  min-width:975px;
+}
+
+footer, .wrap:after {
+  height: 33px;
+}
+
+footer > ul {
+  float:right;
+}
+
+footer > ul > li {
+  float:left;
+}
+
+footer > ul > li > a {
+  display: block;
+  padding: 10px;
+  color: gray;
+}
+
+footer > ul > li > a:hover {
+  text-decoration: underline;
+}

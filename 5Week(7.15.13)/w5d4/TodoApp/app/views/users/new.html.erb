@@ -1,0 +1,22 @@
+<h1>Create New User</h1>
+<form action="<%= users_path %>" method="post">
+	<label for="name">Name</label>
+	<input id="name" name="user[name]">
+
+	<h3>Join Teams</h3>
+	<table>
+		<% @teams.try(:each_slice, 5) do |slice| %>
+		<tr></tr>
+			<% slice.try(:each) do |team| %>
+				<td>
+					<input type="checkbox" id="<%= "team#{team.id}" %>" name="team_ids[]" value="<%= team.id %>">
+					<label for="<%= "team#{team.id}" %>"><%= team.name %></label>
+				</td>
+			<% end %></tr><tr><td><br></td></tr>
+		<% end %>
+	</table>
+	<% render partial: 'shared/csrf' %>
+	<hr><br>
+	<input type="submit" value="submit" id="submit">
+
+</form>

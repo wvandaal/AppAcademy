@@ -1,0 +1,46 @@
+<ul>
+  <% @users.try(:each) do |user|%>
+    <li>
+      <%= link_to user.username, user %>
+      <div class="<%= "is-friend" if current_user.friend_ids.include?(user.id) %>">
+        <form class="friend" action="<%= user_friendship_url(user) %>" method="POST">
+          <%= render partial: "shared/csrf" %>
+          <input type="submit" value="Add Friend">
+        </form>
+
+        <form class="unfriend" action="<%= user_friendship_url(user.id) %>" method="POST">
+          <%= render partial: "shared/csrf" %>
+          <input type="submit" value="Unfriend">
+          <input type="hidden" name="_method" value="DELETE">
+        </form>
+      </div>
+    </li>
+  <% end %>
+</ul>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $("input[type=submit]").on("click",function(event){
+    event.preventDefault();
+    var formData = $(this.form).serialize();
+    var that = this;
+    var form = $(that).parent().parent();
+
+    $.ajax({
+      url: that.form.action,
+      type: that.form.method,
+      dataType: "json",
+      data: formData,
+      success: function() {
+        console.log(form);
+        form.toggleClass('is-friend');
+      },
+      failure: function() {
+       console.log("Failed");
+      }
+    });
+
+  });
+});
+</script>
+

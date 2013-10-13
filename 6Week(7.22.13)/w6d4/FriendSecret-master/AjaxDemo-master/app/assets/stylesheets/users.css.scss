@@ -1,0 +1,38 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+//form.friend {
+//    display: block;
+//}
+//
+//form.unfriend {
+//    display: none;
+//}
+//
+//
+//div.friend-unfriend .is-friend {
+//  > form.friend {
+//    display: none;
+//  }
+//
+//  > form.unfriend {
+//    display: block;
+//  }
+//}
+
+.unfriend {
+  display: none;
+}
+
+
+.is-friend {
+  .friend {
+    display: none;
+  }
+
+  .unfriend {
+    display: block;
+  }
+}

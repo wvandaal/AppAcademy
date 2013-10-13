@@ -1,0 +1,20 @@
+<h1><%= link_to "↵ ", @project.team %><%= @project.title %></h1>
+<h3>Description</h3>
+<p><%= @project.description %></p>
+
+<% if @project.items.present? %>
+	<table>
+		<thead style="font-weight:bold;">
+			<td>Tasks</td>
+			<td>Status</td>
+		</thead>
+		<% @project.items.each do |item| %>
+			<tr>
+				<td><%= link_to item.title, item %></td>
+				<td>&emsp;<%= item.completed ? "✓" : "--" %></td>
+			</tr>
+		<% end %>
+	</table>
+<% end %>
+<br><hr><br>
+<%= link_to "Edit Project", edit_project_path(@project) %>&emsp;|&emsp; <%= link_to "New Task", new_item_path %>

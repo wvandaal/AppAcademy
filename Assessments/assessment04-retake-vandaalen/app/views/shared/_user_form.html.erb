@@ -1,0 +1,10 @@
+<form action="<%= path %>" method="post">
+	<input type="hidden" name="_method" value="<%= method %>">
+
+	<label for="username">Username</label>
+	<input id="username" type="text" name="username" value="<%= @user.try(:username) %>">
+
+	<label for="password">Password</label>
+	<input id="password" type="password" name="password">
+
+	<%= render partial: 'shared/csrf' %>

@@ -1,0 +1,31 @@
+html *
+{
+   a {
+   	text-decoration: none;
+   }
+   font-family: Baskerville, "Baskerville Old Face", "Hoefler Text", Garamond, "Times New Roman", serif;
+}
+
+body {
+	margin: 0 8%;
+}
+
+div.errors {
+	background-color: red;
+	opacity: .8;
+	border-radius: 5px;
+	margin: 2%;
+	ul {
+		li {
+			padding: 5px 0;
+			font-size: 1.1em;
+			color: white;
+			font-weight: bold;
+		}
+	}
+}
+
+thead {
+	td { padding-right: 10px; }
+}
+

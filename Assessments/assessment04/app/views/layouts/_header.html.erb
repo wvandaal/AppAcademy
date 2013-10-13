@@ -1,0 +1,9 @@
+<% unless logged_in? %>
+	<header><%= link_to "Sign In", new_session_path %></header>
+<% else %>
+	<header><%= button_to "Sign Out", session_path, method: :delete %></header>
+<% end %>
+<h1><%= current_user.username if logged_in? %></h1>
+<% flash[:errors].try(:each) do |error| %>
+	<p style="color:red"><%= error %></p>
+<% end %>

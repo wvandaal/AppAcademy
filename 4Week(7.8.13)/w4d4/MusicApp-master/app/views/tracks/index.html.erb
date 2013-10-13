@@ -1,0 +1,6 @@
+<h2>Tracks by <%= @band.name %></h2>
+<ul>
+  <% @tracks.try(:each) do |track| %>
+  <li><%= link_to "#{track.title} (#{track.album.title})", track%></li>
+  <% end %>
+</ul>

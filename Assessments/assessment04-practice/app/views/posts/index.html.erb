@@ -1,0 +1,10 @@
+<h2>Posts Index</h2>
+<%= current_user.username %>
+
+<ul>
+<% @posts.each do |post| %>
+	<li><%= link_to post.title, post_path(post) %></li>
+<% end %>
+</ul>
+
+<%= link_to "Sign In", new_session_path %>

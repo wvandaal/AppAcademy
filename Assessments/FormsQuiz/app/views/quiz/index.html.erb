@@ -1,0 +1,193 @@
+<h1>Form Quiz</h1>
+
+<hr>
+
+<h2>Instructions</h2>
+
+<p>Look at <a href="view-source:http://localhost:3000/">the code</a> of this page and write out with pencil and paper the Rails <strong>params</strong> hash for each of the following forms, given the user submits the form as-is in the default state.</p>
+
+<p>Check your answers afterwards by clicking the submit button for each form.</p>
+
+<h2>Params</h3>
+
+<pre>
+<%= params.dup.delete_if {|k, v| ["action", "controller"].include?(k)} %>
+</pre>
+
+<hr>
+
+<h2>Submit</h2>
+
+<form action="/" method="post">
+  <input type="submit" name="commit" value="Submit">
+</form>
+
+<hr>
+
+<h2>Text Input</h2>
+
+<form action="/" method="post">
+  <label for="cat">Cat</label>
+  <input type="text" id="cat" name="cat" value="Sennacy">
+  <input type="submit" name="commit" value="Submit">
+</form>
+
+<hr>
+
+<h2>Textarea</h2>
+
+<form action="/" method="post">
+  <label for="biography">Biography</label>
+  <textarea id="biography" name="biography">
+    I am a cat and I can open doors.
+  </textarea>
+  <input type="submit" name="commit" value="Submit">
+</form>
+
+<hr>
+
+<h2>Hidden Field</h2>
+
+<form action="/" method="post">
+  <input type="hidden" name="secret" value="I watch you while you sleep.">
+  <input type="submit" name="commit" value="Submit">
+</form>
+
+<hr>
+
+<h2>Dropdown</h2>
+
+<form action="/" method="post">
+  <label for="activity_id">Today's activity</label>
+  <select id="activity_id" name="activity_id">
+    <option value="1">Sleep</option>
+    <option value="2">Hunt</option>
+    <option value="3" selected>Sunbathe</option>
+    <option value="4">Open all doors</option>
+    <option value="5">World Domination</option>
+  </select>
+  <input type="submit" name="commit" value="Submit">
+</form>
+
+<hr>
+
+<h2>Checkboxes</h2>
+
+[Make sure to click none, one, and both.]
+
+<form action="/" method="post">
+  <label>
+    <input type="checkbox" name="humans_are_awesome" value="1">
+    Humans are awesome.
+  </label>
+  
+  <label>
+    <input type="checkbox" name="cats_are_awesome" value="1" checked>
+    Cats are awesome.
+  </label>
+  
+  <input type="submit" name="commit" value="Submit">
+</form>
+
+<hr>
+
+<h2>Radio Buttons</h2>
+
+<form action="/" method="post">
+  <label>
+    <input id="gender_male" name="gender" type="radio" value="male">
+    Male
+  </label>
+  
+  <label>
+    <input id="gender_female" name="gender" type="radio" value="female" checked>
+    Female
+  </label>
+  
+  <input type="submit" name="commit" value="Submit">
+</form>
+
+<hr>
+
+<h2>Scoping Fields</h2>
+
+<form action="/" method="post">
+  <div class="field">
+    <label for="cat_name">Name</label>
+    <input type="text" id="cat_name" name="cat[name]" value="Sennacy">
+  </div>
+  
+  <div class="field">
+    <label for="cat_color">Color</label>
+    <select id="cat_color" name="cat[color]">
+      <option value="orange">Orange</option>
+      <option value="brown" selected>Brown</option>
+      <option value="black">Black</option>
+    </select>
+  </div>
+    
+  <input type="hidden" name="cat[owner_id]" value="1">
+  <input type="submit" name="commit" value="Submit">
+</form>
+
+<hr>
+
+<h2>Collecting Fields Into Arrays</h2>
+
+[What is the purpose of the bumper field? What if it weren't there?]
+
+<form action="/" method="post">
+  <!-- <label> -->
+    <input name="friend[]" type="checkbox" value="Jonathan" checked>
+    Jonathan
+  <!-- </label> -->
+  
+  <!-- <label> -->
+    <input name="friend[]" type="checkbox" value="Christi" checked>
+    Christi
+  <!-- </label> -->
+  
+  <!-- <label> -->
+    <input name="friend[]" type="checkbox" value="Stacy">
+    Stacy
+  <!-- </label> -->
+  
+  <input type="submit" name="commit" value="Submit">
+</form>
+
+<hr>
+
+<h2>Collecting and Scoping Fields Combined</h2>
+
+<form action="/" method="post">
+  <div class="field">
+    <label for="cat_initials">Initials</label>
+    <input type="text" id="cat_initials" name="cat[initials]" value="S">
+  </div>
+  
+  <label>
+    <input name="cat[friend_ids][]" type="checkbox" value="1">
+    Jonathan
+  </label>
+  
+  <label>
+    <input name="cat[friend_ids][]" type="checkbox" value="2">
+    Christi
+  </label>
+  
+  <label>
+    <input name="cat[friend_ids][]" type="checkbox" value="3" checked>
+    Stacy
+  </label>
+  
+  <input type="hidden" name="cat[friend_ids][]" value="">
+  <input type="submit" name="commit" value="Submit">
+</form>
+
+<hr>
+
+<h2>Next, write your own forms</h2>
+
+<p>Go to <a href="/cats/new">/cats/new</a> and write a form to add a cat.</p>
+
+<hr>

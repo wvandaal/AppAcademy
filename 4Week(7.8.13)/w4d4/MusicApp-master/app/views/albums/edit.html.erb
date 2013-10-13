@@ -1,0 +1,4 @@
+<h2>Edit Album</h2>
+<%= render partial: "form", locals:{path: album_url, method: "put"} %>
+<br>
+<%= button_to "Delete Album", album_url, :method => :delete %>

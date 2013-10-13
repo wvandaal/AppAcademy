@@ -1,0 +1,15 @@
+<h2><%= "#{@album.title} (#{@album.pub_date.year})" %></h2>
+<h4><%= @album.album_type.capitalize %> Album</h4>
+<h4>Artist: <%= link_to @album.band.name, @album.band %></h4>
+
+<h3>Tracks</h3>
+<ol>
+  <% @album.tracks.try(:each_with_index) do |track, i| %>
+    <li><%= link_to "#{track.title}", track %></li>
+  <% end %>
+</ol>
+<% if is_admin? %>
+  <%= link_to "Add Track", new_album_track_url(@album) %>
+  &nbsp;&#124;&nbsp;
+  <%= link_to "Edit Album", edit_album_url(@album)  %>
+<% end %>

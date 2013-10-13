@@ -1,0 +1,42 @@
+<h2><%= @track.title %></h2>
+<h4>Artist: <%= link_to @track.band.name, @track.band %></h4>
+<h4>Album: <%= link_to @track.album.title, @track.album %></h4>
+<% if @track.track_type == "bonus" %>
+  <h4><%= "#{@track.track_type.capitalize} Track" %></h4>
+<% end %>
+<% if @track.lyrics.present? %>
+  <h4>Lyrics</h4>
+  <%= lyrics_for(@track)%>
+<% end %>
+
+<h4>Comments</h4>
+<% if @notes.present? %>
+  <hr>
+  <% @notes.each do |note| %>
+    <p>
+      <b><%= note.user.email %> wrote:</b><br>
+      <%= note.body %>
+    </p>
+    <% if note.user == current_user || is_admin? %>
+      <%= button_to "Delete Note", note_url(note), :method => :delete %>
+    <% end %>
+    <hr>
+  <% end %>
+<% else %>
+  <p>No notes yet :(</p>
+<% end %>
+
+<% if logged_in? %>
+  <form action="<%= notes_url %>" method="post">
+    <textarea name="note[body]"></textarea>
+    <input type="hidden" name="note[track_id]" value="<%= @track.id %>">
+    <%= render partial: 'shared/csrf_input.html.erb' %>
+    <br>
+    <input type="submit" value="Add Note">
+    <br><br>
+  </form>
+
+<% end %>
+
+
+<%= link_to "Edit Track", edit_track_url(@track) if is_admin? %>

@@ -1,0 +1,14 @@
+<form action="<%= post_path(@post) %>" method="post">
+	<label for="Title">Title</label>
+	<input type="text" name="post[title]" id="Title" value="<%= @post.title %>" />
+
+	<label for="Body">Body</label>
+	<textarea name="post[body]" id="Body"><%= @post.body %></textarea>
+
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+	<input type="hidden" name="post[user_id]" value="<%= @post.user_id %>">
+
+	<input type="hidden" name="_method" value="put">
+	<input type="submit" value="Update Post">
+</form>

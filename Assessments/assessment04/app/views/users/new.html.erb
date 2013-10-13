@@ -1,0 +1,11 @@
+<h1>Sign Up</h1>
+<form action=<%= users_path %> method="post">
+	<label for="username">Username</label>
+	<input id="username" type="text" name="user[username]">
+	<label for="password">Password</label>
+	<input id="password" type="password" name="user[password]">
+	<%= render partial: "shared/csrf" %>
+	<br>
+	<p>Already signed up? <%= link_to "Log In", new_session_path %></p> 
+	<input type="submit" value="Sign Up">
+</form>

@@ -1,0 +1,13 @@
+<h2>Register</h2>
+<form action="<%= user_url %>" method="post" >
+  <label for="email">Email: </label>
+  <input type="text" name="user[email]" id="email" >
+  <br><br>
+
+  <label for="password">Password: </label>
+  <input type="password" name="user[password]" id="password" >
+  <br><br>
+
+  <%= render partial: 'shared/csrf_input.html.erb' %>
+  <input type="submit" value="Submit">
+</form>

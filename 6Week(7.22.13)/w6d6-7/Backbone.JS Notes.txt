@@ -1,0 +1,72 @@
++ Backbone directory structure:
+	- app/assets/javascripts
+		- [app_name].js
+		- /collections
+		- /models
+		- /routers
+		- /views
+	- NOTE: must declare all of these files in the application.js manifest file
+		- declare the [app-name].js file first!
+	- e.g.:
+		// app/assets/javascripts/application.js
+		//
+		// Libraries from gems:
+		//= require jquery
+		//= require jquery_ujs
+		//= require backbone-rails
+		//
+		// Your top-level namespace:
+		//= require [app_name]
+		//
+		// Directories with Backbone classes:
+		//= require_tree ./models
+		//= require_tree ./collections
+		//= require_tree ./routers
+		//= require_tree ./views
++ Backbone.View is subclass similar to Rails controller
+	- renders a template (similar to Rails view)
+	- stays alives in window until removed (by new http request or some JS)
+		- events (like clicks, etc.) are delegated to methods in given view class
+		- different from Rails controller in this way since Rails controller is instantaneous router
+			which is only instantiated when request is made, calls appropriate action, and is destroyed
++ New Backbone.View is created by calling .extend() and defining custom methods by passing an object
+	with the given methods defined therein (see TasksApp task_list_view.js for example)
+	- most important method to implement is render() which renders model(collection) data into $el attribute
+		- every view has $el, or "root element", usually a blank div into which content is added by #render
+			- most cases, caller that requests the render will insert $el into DOM when it is ready
+		- NOTE: render() is supposed to return the view object itself, allowing us to write:
+			//$(rootEl).html(tasksListView.render().$el);
++ We use templates to format content of View (in this case, EJS templates, which require "gem 'ejs'")
+	- store templates in app/assets/templates directory
+		- this is unfamiliar to Rails so it must be added to config/application.rb file with:
+			//config.assets.paths << "app/assets/templates"
+		- must also be added to application.js:
+			// EJS Templates
+			//= require_tree ../templates
+	- NOTE: EJS templates are saved as .jst.ejs (JST is for JS Template)
+	- templates can then be called in #render method in view as such:
+    //  var renderedContent = JST["tasks/list"]({
+    //  tasks: that.collection
+    //  });
+		- the renderedContent is then passed to that.$el.html()
++ View Events
+	- to bind handlers to events (i.e. functions that are called when the user does something like click),
+		you can define an "events" object that has attributes of the form:
+		// "eventName cssSelector": "methodsToExecute"
+		- e.g.:
+		// events: {
+  	//   "click li.task": "showTask"
+  	// },
+ + Routers allow us to navigate within a Backbone app
+ 	- when user clicks on link that matches pattern in router, the router will call the specified method
+ 		- NOTE: storing the root element ($rootEl) in the router allows new content to be rendered in the 
+ 			same page (into the rootEl)
+ 	- initialize the router in the top-level js file (e.g. the [app-name].js mentioned earlier)
+ 		- NOTE: must also call "Backbone.history.start()" to begin listening for navigation events
+ 	- Routers are built similarly to Views, by extending the Backbone.Router class
+ 		- the object defines initialize() method
+ 			- takes root element and the collection as args and assigns them to attributes in the router
+ 		-	defines routes object
+ 			- attributes of routes obj are defined in the form: "rails/path/:id": "functionInRouter"
+ 		- see app/assets/javascripts/routers/tasks_router.js in TasksApp for an example
+ 		- any called actions (such as index, show, etc.) are also defined in the Router

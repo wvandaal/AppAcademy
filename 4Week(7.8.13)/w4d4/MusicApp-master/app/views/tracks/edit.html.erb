@@ -1,0 +1,4 @@
+<h2>Edit Track</h2>
+<%= render partial: "form", locals: {path: track_url, method: "put"} %>
+<br>
+<%= button_to "Delete Track", track_url, :method => :delete %>

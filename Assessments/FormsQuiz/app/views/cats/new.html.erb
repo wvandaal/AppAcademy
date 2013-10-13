@@ -1,0 +1,33 @@
+<h1>Form Quiz</h1>
+
+<hr>
+
+<h2>Instructions</h1>
+
+<p>Your exercise is to write a form on this page to create a valid cat. Write this using <strong>plain html</strong> forms. Once succeeded, rewrite this page with the Rails Form Builder Helpers.</p>
+
+<p>The routes, controller, models, database schema, and seeds are all set up. Check them out before you begin.</p>
+
+<p>Your form should make a <strong>POST</strong> request to the path <strong>"/cats"</strong>.</p>
+
+<ul>
+  <li>Use a dropdown to select a color from the Color model.</li>
+  <li>Use radio buttons for the gender with M and F values.</li>
+  <li>Use checkboxes to pick human friends from the Human model.</li>
+</ul>
+
+<hr>
+
+<h2>Add a cat</h1>
+
+<form action="/cats" method="post">
+	<label for="cat_color">Choose a color</label>
+	<select id="cat_color" name="cat[color]">
+		<option value="orange">Orange</option>
+		<option value="brown">Brown</option>
+		<option value="black">Black</option>
+	</select>	
+	<label><input id="cat_gender_female" name="cat[gender]" value="f" type="radio">Female</label>
+	<label><input id="cat_gender_male" name="cat[gender]" value="m" type="radio">Male</label>
+	
+</form>

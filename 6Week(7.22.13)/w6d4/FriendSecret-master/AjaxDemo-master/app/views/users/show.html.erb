@@ -1,0 +1,56 @@
+<h1><%= @user.username %></h1>
+
+<%= render partial: "secrets/form"%>
+<pre id="add_tag">Add Tag</pre>
+<ul>
+  <% @user.received_secrets.each do |secret| %>
+    <li><%= link_to secret.title, secret %></li>
+  <% end %>
+</ul>
+
+<script type="text/template" id="tags_template">
+  <br><select name="secret[tag_ids][]">
+    <option></option>
+    <%% _(tags).each(function(tag) { %>
+      <option value="<%%= tag.id %>"><%%= tag.name %></option>
+    <%% }); %>
+  </select>
+</script>
+
+<script>
+  $(document).ready(function(){
+
+    var tagCode = $("#tags_template").html();
+    var tagTemplate = _.template(tagCode);
+
+    var renderedTagContent = tagTemplate({
+      tags: <%= Tag.all.to_json.html_safe %>
+    });
+
+    $('#add_tag').click(function(event) {
+      $('select').last().after(renderedTagContent);
+    });
+
+    $('form').find('input[type=submit]').click(function(event){
+
+      event.preventDefault();
+      var formData = $(this.form).serialize();
+
+      $.ajax({
+        url: "<%= user_secrets_url(@user, format: :json) %>",
+        type: "POST",
+        dataType: "json",
+        data: formData,
+        success: function(secret) {
+          $('#secret_title').val("");
+          $('#secret_body').val("");
+          console.log(secret);
+          $('ul').append('<li><a href="/secrets/' + secret.id + '">' +secret.title+ '</a></li>')
+        },
+        failure: function() {
+         console.log("Failed secret");
+        }
+      });
+    });
+  });
+</script>

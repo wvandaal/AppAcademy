@@ -1,0 +1,4 @@
+<h2>Edit Band</h2>
+<%= render partial: "form", locals:{path: band_url, method: "put"} %>
+<br>
+<%= button_to "Delete Band", band_url, :method => :delete %>

@@ -1,0 +1,14 @@
+<p id="notice"><%= flash[:error] %></p>
+<form action="<%= cat_rental_requests_path %>" method="post">
+  <label for="cat_id">Cat</label>
+  <select name = "cat_rental_request[cat_id]" id="cat_id">
+    <% Cat.all.each do |cat| %>
+      <option value="<%= cat.id %>"><%= "[#{cat.id}] #{cat.name}" %> </option>
+    <% end %>
+  </select>
+  <label for="cat_rental_request_begin_date">Start Date</label>
+  <input type="date" name="cat_rental_request[begin_date]" id="cat_rental_request_begin_date">
+  <label for="cat_rental_request_end_date">End Date</label>
+  <input type="date" name="cat_rental_request[end_date]" id="cat_rental_request_end_date">
+  <input type="submit" value="Create Rental Request">
+</form>

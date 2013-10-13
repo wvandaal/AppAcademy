@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <title>Great snakes!</title>
+
+    <script type="text/javascript"
+             src="jquery-1.9.1.js"></script>
+    <script type="text/javascript"
+             src="underscore.js"></script>
+    <script type="text/javascript"
+             src="snake.js"></script>
+    <script type="text/javascript"
+             src="snake_ui.js"></script>
+  </head>
+
+  <body>
+    <pre id="canvas"></pre>
+
+    <script>
+      $(function () {
+        var snakeGameView =
+          new SnakeUI.SnakeGameView($("#canvas")[0]);
+
+        snakeGameView.start();
+      });
+    </script>
+  </body>
+</html>

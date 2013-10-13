@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="../jquery-1.9.1.js"></script>
+	<script src="../underscore.js"></script>
+	<script src="app.js"></script>
+	<script src="appUI.js"></script>
+</head>
+<body>
+	<pre id="canvas"></pre>
+
+	<script type="text/javascript">
+		 $(function () {
+        var snakeGameView = new SnakeUI.SnakeGameUI($("#canvas")[0]);
+
+        snakeGameView.start();
+      });
+	</script>
+</body>
+</html>
